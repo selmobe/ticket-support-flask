@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+		<link rel="stylesheet" href="cmb.css">
+	</head>
+	<body>
+			enableSelectBoxes();
+		<script type='text/javascript'>
+			$(document).ready(function() {
+			});
+			
+			function enableSelectBoxes(){
+				$('div.selectBox').each(function(){
+					$(this).children('span.selected').html($(this).children('ul.selectOptions').children('li.selectOption:first').html());
+					$('input.price_values').attr('value',$(this).children('ul.selectOptions').children('li.selectOption:first').attr('data-value'));
+					
+					$(this).children('span.selected,span.selectArrow').click(function(){
+						if($(this).parent().children('ul.selectOptions').css('display') == 'none'){
+							$(this).parent().children('ul.selectOptions').css('display','block');
+						}
+						else
+						{
+							$(this).parent().children('ul.selectOptions').css('display','none');
+						}
+					});
+					
+					$(this).find('li.selectOption').click(function(){
+						$(this).parent().css('display','none');
+                                                $('input.price_values').attr('value',$(this).attr('data-value'));
+						$(this).parent().siblings('span.selected').html($(this).html());
+					});
+				});				
+			}//-->
+		</script>
+		<div class='selectBox'>
+                    <input type="hidden" value="3" class="price_values"/>
+                    <span class='selected'></span>
+                    <span class='selectArrow'>&#9660</span>
+                    <ul class="selectOptions" >
+                        <li class="selectOption" data-value="value 1">Option 1</li>
+                        <li class="selectOption" data-value="value 2">Option 2</li>
+                        <li class="selectOption" data-value="value 3">Option 3</li>
+                    </ul>
+		</div>
+	</body>
+</html>

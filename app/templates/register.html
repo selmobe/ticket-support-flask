@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerberus Gate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script> 
+          
+        // Function to check Whether both passwords 
+        // is same or not. 
+        function checkPassword(form) { 
+            password1 = form.password.value; 
+            password2 = form.check_password.value; 
+
+            // If password not entered 
+            if (password1 == '') 
+                alert ("Entre com a senha"); 
+                  
+            // If confirm password not entered 
+            else if (password2 == '') 
+                alert ("Entre com a confirmação da senha"); 
+                  
+            // If Not same return False.     
+            else if (password1 != password2) { 
+                alert ("\nSenhas não conferem, por favor, tente novamente...") 
+                return false; 
+            } 
+
+            // If same return True. 
+            else{ 
+                alert("Cadastro realizado, agora será redirecionado para a pagina de login") 
+                return true; 
+            } 
+        } 
+    </script> 
+</head>
+
+<body>
+    <div class="form-wrapper">
+    <form class="form" action="" method="POST" onSubmit="return checkPassword(this)">
+
+        <div class="card">     
+            <div class="card-top">
+                <img class="img-login" src="{{ url_for('static', filename='img/user.png') }}" alt="">
+                <h2 class="title">Painel de Controle</h2>
+                <p>Gerenciar seu negocio</p>
+            </div>
+            
+            <div class="card-group">
+                <label>Nome</label>
+                <input type="text" name="name" placeholder="Entre com o seu nome" value="{{ request.form.name }}" required>
+            </div>
+
+            <div class="card-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Digite seu e-mail" value="{{ request.form.email }}" required>
+            </div>
+
+            <div class="card-group"> 
+                <label>Senha</label>
+                <input type="password" name="password" placeholder="Digite sua senha" value="{{ request.form.password }}" required>
+            </div>
+
+            <div class="card-group"> 
+                <label>Reconfirmação de senha</label>
+                <input type="password" name="check_password" placeholder="Confirme sua senha"  required>
+            </div>
+
+            <div class="card-group btn">
+                <button type="submit">Cadastrar</button>
+            </div>
+
+            
+            <div class="card-group">
+                <label>Já possui cadastro? <a href="{{ url_for('login')}}">Entrar</a></label>
+            </div>
+
+            <div class="error">
+                {% if error %}
+                    <p class="error"><strong>Error:</strong><font-color="red"> {{ error }} </font-color></p>
+                {% endif %}
+            </div>
+        </div>
+
+    </form>
+    </div>
+
+    
+
+</body>
+</html>

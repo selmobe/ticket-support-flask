@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block content %}
+    <style>
+        label{
+            display:inline-block;
+            width: 150px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 180px;
+            margin-bottom: 5px;
+        }
+
+        select {
+            justify-content: space-around;
+            margin-top: 5px;
+        }
+
+        #submitbutton{
+            margin-left: 120px;
+            margin-top: 5px;
+            width: 90px;
+        }
+
+        br{
+            clear: left;
+        }
+    </style>
+    <form method="POST">
+        <div>
+            <label>ID Usuário</label>
+            <input type="text" name="USER_ID" id="" value="{{ request.form.USER_ID }}">
+        </div>
+
+        <div>
+            <label>Nome de Usuário</label>
+            <input type="text" name="USER_NAME" id="" value="{{ request.form.USER_NAME }}"> 
+        </div>
+
+        <div>
+            <label>E-mail</label>
+            <input type="email" name="USER_EMAIL" id="" value="{{ request.form.USER_EMAIL }}">
+        </div>
+
+        <div>
+            <label>Nivel de Acesso</label>
+            <select name="USER_ACCESS_LEVEL"
+            {% if current_user.USER_ACCESS_LEVEL == 1 %}
+                enabled
+            {% else %}
+                disabled
+            {% endif %}>
+
+                {% for key, value in USER_ACCESS_LEVEL_LIST.items() %}
+                    <option value="{{key}}" 
+                    {% if (key == USER_ACCESS_LEVEL) %} 
+                        selected="selected" 
+                    {% endif %}
+                    >
+                    {{value}}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div>
+            <label>Status</label>
+            <select name="USER_STATUS"
+            {% if current_user.USER_ACCESS_LEVEL == 3 %}
+                disabled
+            {% endif %}>
+
+                {% for key, value in USER_STATUS_LIST.items() %}
+                    <option value="{{key}}" 
+                    {% if (key == USER_STATUS) %} 
+                        selected="selected" 
+                    {% endif %}
+                    >
+                    {{value}}
+                    </option>
+                {% endfor %}
+            </select>
+            <!--<input type="text" name="USER_STATUS" id="" value="{{ request.form.USER_STATUS }}"> -->
+        </div>
+        
+        <div>
+            <button type="submit">Salvar</button>
+        </div>
+    </form>
+
+{% endblock %}

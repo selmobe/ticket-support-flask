@@ -1,0 +1,70 @@
+body{
+    background-color: #f0f0f0;
+    font-family: sans-serif;
+    background-image: url('../img/login_background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form{
+    width: 400px;  /* Largura do form*/
+    margin: auto;  /* Centraliza*/
+    padding-top: 40px;  /* Espaço acima do form */
+}
+
+.card{
+    box-shadow: 1px 1px 5px #ccc; /* Cria o feito de borda sombreada*/
+    background-color: white; /* cor branca para o fundo do card*/
+    padding: 30px; /* */ /* */
+    border-radius: 5px;  /* Cria a borda arredonda */
+
+}
+.card-top{
+    text-align: center;
+
+}
+
+.card-group{
+    margin-bottom: 5px;
+    font-family: sans-serif;
+}
+
+.card-group > label{
+    width: 100%;
+    color: #ccc;
+    display: block; /* Define para ocupar toda a linha */
+}
+
+.card-group > input{
+    border-radius: 5px;
+    outline: 0;
+    width: 100%;
+    height: 25px;
+    padding: 5px;
+
+}
+
+.card-group > button{
+    border-radius: 30px;
+    width: 100%;
+    padding: 15px;
+    background-image: linear-gradient(to right, red, #dc3545);
+    color: white;
+    border: 0px;
+    outline: 0;
+}
+
+.btn button:hover{
+    background-image: linear-gradient(to right, red, #a52230);
+}
+
+.img-login{
+    border-radius: 100px; /* Cria as bordas arredondadas */
+    width: 200px; /* Tamanho da imagem*/
+    box-shadow: 1px 1px 5px #ccc; /* Borda com sombreamento*/ /*1° centraliza-esquerda  2° centraliza-baixo 3° nitidez-sombra*/
+
+}
+.title{
+    color: #dc3545;
+
+}

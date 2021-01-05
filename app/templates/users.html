@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+    {% block content %}
+    <style>
+        table {
+            border-collapse: collapse; /* remove o espaço entre as bordas da tabela*/
+        }
+        td, th {
+            border: 1px solid #999;
+            padding: 0.5rem;
+            width: 10rem;
+            height: 2rem;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        th {
+            background: lightblue;
+            border-color: white;
+        }
+        body {
+            padding: 1rem;
+        }
+    </style>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Nivel de Acesso</th>
+            <th>Status</th>
+            <th>Ultimo Acesso</th>
+            <th>Data de Cadastro</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+            
+
+            {% for row in users%}
+            <tr>
+                <td>{{ row.USER_ID }}</td>
+                <td>{{ row.USER_NAME }}</td>
+                <td>{{ row.USER_EMAIL }}</td>
+                
+                <!-- converte valores em dados -->
+                {% if row.USER_ACCESS_LEVEL==1 %}
+                    <td>1 - Administrador</td>
+
+                {% elif row.USER_ACCESS_LEVEL==2 %}
+                    <td>2 - Atendente</td>
+
+                {% elif row.USER_ACCESS_LEVEL==3 %}
+                    <td>3 - Usuário</td>
+                {% endif %}
+
+                {% if row.USER_STATUS==1 %}
+                    <td>1 - Ativo</td>
+
+                {% elif row.USER_STATUS==2 %}
+                    <td>2 - Inativo</td>
+
+                {% elif row.USER_STATUS==3 %}
+                    <td>3 - Bloqueado</td>
+                {% endif %}
+
+                <td>{{ row.USER_LAST_ACCESS }}</td>
+                <td>{{ row.USER_DATE_REGISTER }}</td>
+                <td> <a href="{{ url_for('user_edit', user_id=row.USER_ID) }}">Editar</a> / Bloquear</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  {% endblock %}

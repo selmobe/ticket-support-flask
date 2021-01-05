@@ -1,0 +1,577 @@
+{
+  "canvas": {
+    "width": 2000,
+    "height": 2000,
+    "scrollTop": 0,
+    "scrollLeft": 7,
+    "show": {
+      "tableComment": true,
+      "columnComment": true,
+      "columnDataType": true,
+      "columnDefault": true,
+      "columnAutoIncrement": true,
+      "columnPrimaryKey": true,
+      "columnUnique": true,
+      "columnNotNull": true,
+      "relationship": true
+    },
+    "database": "SQLite",
+    "databaseName": "FLASK_TICKET_SUPPORT",
+    "canvasType": "ERD",
+    "language": "GraphQL",
+    "tableCase": "pascalCase",
+    "columnCase": "camelCase",
+    "setting": {
+      "relationshipDataTypeSync": true,
+      "columnOrder": [
+        "columnName",
+        "columnDataType",
+        "columnNotNull",
+        "columnUnique",
+        "columnAutoIncrement",
+        "columnDefault",
+        "columnComment"
+      ]
+    }
+  },
+  "table": {
+    "tables": [
+      {
+        "name": "USERS",
+        "comment": "Dados de usuário para controle na plataforma",
+        "columns": [
+          {
+            "name": "USER_ID",
+            "comment": "Id do usuário - Autoincremento",
+            "dataType": "INTEGER",
+            "default": "1000",
+            "option": {
+              "autoIncrement": true,
+              "primaryKey": true,
+              "unique": true,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 60,
+              "widthComment": 179,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "8bbd4e53-443e-e34b-778c-318699a42bbe"
+          },
+          {
+            "name": "USER_NAME",
+            "comment": "Nome completo",
+            "dataType": "VARCHAR(150)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 83,
+              "widthComment": 93,
+              "widthDataType": 95,
+              "widthDefault": 60
+            },
+            "id": "a1f040a3-9386-f5d5-f835-4e2e12831099"
+          },
+          {
+            "name": "USER_EMAIL",
+            "comment": "e-mail do usuário para acesso",
+            "dataType": "VARCHAR(150)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": true,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 84,
+              "widthComment": 176,
+              "widthDataType": 95,
+              "widthDefault": 60
+            },
+            "id": "90c76495-682a-9e59-dad0-37bcaaeca31e"
+          },
+          {
+            "name": "USER_HASH_PASSWORD",
+            "comment": "senha encriptada",
+            "dataType": "VARCHAR(128)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 164,
+              "widthComment": 102,
+              "widthDataType": 95,
+              "widthDefault": 60
+            },
+            "id": "19a3279c-43cf-4d32-d815-51aeffa89b7a"
+          },
+          {
+            "name": "USER_ACCESS_LEVEL",
+            "comment": "1 - Adm / 2 - Atendente / 3 - Usuário",
+            "dataType": "INT(2)",
+            "default": "3",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 147,
+              "widthComment": 209,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "319bc682-5cd4-a1f4-8f85-d6a318074610"
+          },
+          {
+            "name": "USER_STATUS",
+            "comment": "1 - Ativo / 2 - Inativo / 3 - Bloqueado",
+            "dataType": "INT(1)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 95,
+              "widthComment": 209,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "6e77d628-40d6-e435-5d45-3ad678d47fd1"
+          },
+          {
+            "name": "USER_LAST_ACCESS",
+            "comment": "Data/Hora do ultimo acesso",
+            "dataType": "DATETIME",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 139,
+              "widthComment": 162,
+              "widthDataType": 67,
+              "widthDefault": 60
+            },
+            "id": "1cc955cc-01e1-8204-5a75-3dfa241db071"
+          },
+          {
+            "name": "USER_DATE_REGISTER",
+            "comment": "Data de registro",
+            "dataType": "DATETIME",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 153,
+              "widthComment": 95,
+              "widthDataType": 67,
+              "widthDefault": 60
+            },
+            "id": "9ea52e0f-de63-c95f-70df-99f1a632c566"
+          }
+        ],
+        "ui": {
+          "active": true,
+          "left": 28,
+          "top": 68,
+          "zIndex": 415,
+          "widthName": 60,
+          "widthComment": 267
+        },
+        "id": "71ee3ef6-2bfa-24f5-b0d3-6bddf0d06d7a"
+      },
+      {
+        "name": "TICKET_HEADER",
+        "comment": "Tabela de cabeçalho do Tickets",
+        "columns": [
+          {
+            "name": "TICKET_ID",
+            "comment": "Chave primaria ID do Ticket",
+            "dataType": "INTEGER",
+            "default": "1000",
+            "option": {
+              "autoIncrement": true,
+              "primaryKey": true,
+              "unique": true,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 68,
+              "widthComment": 162,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "1de11ebc-5809-c648-b44b-6e3ca2e264bb"
+          },
+          {
+            "name": "TICKET_OPEN",
+            "comment": "Data de abertura do Ticket",
+            "dataType": "DATETIME",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 92,
+              "widthComment": 155,
+              "widthDataType": 67,
+              "widthDefault": 60
+            },
+            "id": "23eb0e8d-2536-b387-14db-14af4b16d06c"
+          },
+          {
+            "name": "TICKET_CLOSE",
+            "comment": "Data do encerramento do Ticket",
+            "dataType": "DATETIME",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 100,
+              "widthComment": 187,
+              "widthDataType": 67,
+              "widthDefault": 60
+            },
+            "id": "36e20052-1226-8226-ce5b-505d8e89e703"
+          },
+          {
+            "name": "USER_ID_OPEN",
+            "comment": "Id do usuário - Autoincremento",
+            "dataType": "INTEGER",
+            "default": "1000",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 102,
+              "widthComment": 179,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "84193996-e00a-58dd-0a2b-c7f71a8a25b5"
+          },
+          {
+            "name": "USER_ID_CLOSE",
+            "comment": "Id do usuário - Autoincremento",
+            "dataType": "INTEGER",
+            "default": "1000",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 110,
+              "widthComment": 179,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "76090c4c-6e9a-3540-d473-d30727f565c5"
+          },
+          {
+            "name": "TICKET_STATUS",
+            "comment": "Status atual do Ticket",
+            "dataType": "VARCHAR(15)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 105,
+              "widthComment": 126,
+              "widthDataType": 88,
+              "widthDefault": 60
+            },
+            "id": "565e8139-8243-0730-6e31-3b4263310973"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 838,
+          "top": 286,
+          "zIndex": 392,
+          "widthName": 110,
+          "widthComment": 183
+        },
+        "id": "864b45b8-258f-e7e6-35a1-bc7df3cf3733"
+      },
+      {
+        "name": "TICKET_DETAILS",
+        "comment": "Tabela com os dados dos Tickets",
+        "columns": [
+          {
+            "name": "TICKET_ID_DETAILS",
+            "comment": "ID da mensagem/anexo",
+            "dataType": "INTEGER",
+            "default": "",
+            "option": {
+              "autoIncrement": true,
+              "primaryKey": true,
+              "unique": true,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": true,
+              "fk": false,
+              "pfk": false,
+              "widthName": 129,
+              "widthComment": 140,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "97038225-6e52-c8a3-c935-38e4fbfddcd1"
+          },
+          {
+            "name": "TICKET_ID",
+            "comment": "Chave primaria ID do Ticket",
+            "dataType": "INTEGER",
+            "default": "1000",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": true,
+              "pfk": false,
+              "widthName": 68,
+              "widthComment": 162,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "cc6d6493-d18c-18a7-3abc-59984ca069c0"
+          },
+          {
+            "name": "TICKET_MESSAGE",
+            "comment": "Mensagem enviada no Ticket",
+            "dataType": "VARCHAR(250)",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 120,
+              "widthComment": 171,
+              "widthDataType": 95,
+              "widthDefault": 60
+            },
+            "id": "4359d970-6c9f-af17-c511-474308857875"
+          },
+          {
+            "name": "TICKET_MESSAGE_DATETIME",
+            "comment": "Data da mensagem",
+            "dataType": "DATETIME",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": true
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 192,
+              "widthComment": 115,
+              "widthDataType": 67,
+              "widthDefault": 60
+            },
+            "id": "bc2cea2c-a06b-c79c-93f8-4d4ab5324dec"
+          },
+          {
+            "name": "TICKET_ATTACHMENT",
+            "comment": "Anexos dos Ticket",
+            "dataType": "BLOB",
+            "default": "",
+            "option": {
+              "autoIncrement": false,
+              "primaryKey": false,
+              "unique": false,
+              "notNull": false
+            },
+            "ui": {
+              "active": false,
+              "pk": false,
+              "fk": false,
+              "pfk": false,
+              "widthName": 142,
+              "widthComment": 108,
+              "widthDataType": 60,
+              "widthDefault": 60
+            },
+            "id": "4355603c-0da2-d377-00b3-2b5feb25bc5f"
+          }
+        ],
+        "ui": {
+          "active": false,
+          "left": 50,
+          "top": 409,
+          "zIndex": 365,
+          "widthName": 109,
+          "widthComment": 194
+        },
+        "id": "9d024e7d-30aa-7297-f188-bcab292de42d"
+      }
+    ],
+    "indexes": []
+  },
+  "memo": {
+    "memos": []
+  },
+  "relationship": {
+    "relationships": [
+      {
+        "identification": false,
+        "start": {
+          "tableId": "71ee3ef6-2bfa-24f5-b0d3-6bddf0d06d7a",
+          "columnIds": [
+            "8bbd4e53-443e-e34b-778c-318699a42bbe"
+          ],
+          "x": 710,
+          "y": 184.5,
+          "direction": "right"
+        },
+        "end": {
+          "tableId": "864b45b8-258f-e7e6-35a1-bc7df3cf3733",
+          "columnIds": [
+            "84193996-e00a-58dd-0a2b-c7f71a8a25b5"
+          ],
+          "x": 838,
+          "y": 334,
+          "direction": "left"
+        },
+        "id": "ec416c52-e869-7c82-6a1f-d9cb420dbf0b",
+        "relationshipType": "OneN"
+      },
+      {
+        "identification": false,
+        "start": {
+          "tableId": "864b45b8-258f-e7e6-35a1-bc7df3cf3733",
+          "columnIds": [
+            "1de11ebc-5809-c648-b44b-6e3ca2e264bb"
+          ],
+          "x": 838,
+          "y": 430,
+          "direction": "left"
+        },
+        "end": {
+          "tableId": "9d024e7d-30aa-7297-f188-bcab292de42d",
+          "columnIds": [
+            "cc6d6493-d18c-18a7-3abc-59984ca069c0"
+          ],
+          "x": 722,
+          "y": 494.75,
+          "direction": "right"
+        },
+        "id": "b455dbf5-3d4f-8182-36e5-71bbaf829ebb",
+        "relationshipType": "ZeroN"
+      }
+    ]
+  }
+}

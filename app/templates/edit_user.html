@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block header %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/cmb.css') }}">
+    <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/edit_user_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav_bar.css') }}">
+{% endblock %}
+
+
+{% block content %}
+ <!-- MENU SUPERIOR -->
+ <div class="topnav">
+    <a class="active" href="#home">Salvar Usuário</a>
+    <a href="#news">Cancelar</a>
+    <a href="#contact">Cadastrar</a>
+    <a href="#about">About</a>
+  </div>
+  <!-- FIM DO MENU SUPERIOR -->
+
+<h2>Alteração de dados de usuário</h2>
+<div class="row">
+    <div class="col-75">
+        <div class="container">
+            <form id="validate" method="POST">
+                <div class="row">
+                    <div class="col-50">
+                        <h3>Dados de Usuário</h3>
+                        <div class="row">
+                            <div class="col-25" >
+                                <label for="fname"><i class="fa fa-user"></i> ID</label>
+                                <input type="text" id="fname" name="USER_ID" value="{{ request.form.USER_ID }}" disabled>
+                            </div>
+                            
+                            <div class="col-50" >
+                                <label for="fname"><i class="fa fa-user"></i> Nome Completo</label>
+                                <input type="text" id="fname" name="USER_NAME" placeholder="Digite seu nome completo" value="{{ request.form.USER_NAME }}" required>
+                            </div>
+                            
+                            <div class="col-25" >
+                                <label for="adr"><i class="fa fa-calendar-o"></i> Data de Nascimento</label>
+                                <input type="text" id="adr" name="USER_DATE_BIRTH" placeholder="10/10/1989" >
+                            </div>
+                        </div>
+
+                        <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                        <input type="text" id="email" name="USER_EMAIL" placeholder="email@example.com.br" value="{{ request.form.USER_EMAIL }}"required>
+                        
+                        <div class="row">
+                            <div class="col-50" >
+                                <label for="adr"><i class="fa fa-road"></i> Endereço</label>
+                                <input type="text" id="adr" name="USER_ADDRESS_STREET" placeholder="Rua" >
+                            </div>
+
+                            <div class="col-50" >
+                                <label for="adr"><i class="fa fa-address-card-o"></i> Bairro</label>
+                                <input type="text" id="adr" name="USER_NEIGHBORHOOD" placeholder="Bairro" >
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-50" >
+                                <label for="city"><i class="fa fa-sort-numeric-desc"></i> Numero</label>
+                                <input type="text" id="city" name="USER_ADRESS_NUMBER" placeholder="120 - casa 2" >
+                            </div>
+                            <div class="col-50" >
+                                <label for="city"><i class="fa fa-institution"></i> Cidade</label>
+                                <input type="text" id="city" name="USER_ADDRESS_CITY" placeholder="Cidade" >
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-50">
+                                <label for="state">Estado</label>
+                                <input type="text" id="state" name="USER_ADDRESS_STATE" placeholder="Estado - UF" >
+                            </div>
+                            <div class="col-50">
+                                <label for="zip">CEP</label>
+                                <input type="text" id="zip" name="USER_ADDRESS_ZIP" placeholder="12345-789" >
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-50">
+                                <label for="state"><i class="fa fa-address-card-o"></i> Nivel de Acesso</label>
+                                    <div class="box" name="USER_ACCESS_LEVEL"
+
+                                        {% if current_user.USER_ACCESS_LEVEL == 1 %}
+                                            enabled
+                                        {% else %}
+                                            disabled
+                                        {% endif %}>
+
+                                        <select name="USER_ACCESS_LEVEL"> 
+                                        {% for key, value in USER_ACCESS_LEVEL_LIST.items() %}
+                                            <option value="{{key}}"
+                                            {% if (key ==USER_ACCESS_LEVEL) %}  
+                                                selected="selected"
+                                            {% endif %}                                        
+                                            >
+                                            {{value}}
+                                            </option>
+                                        {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                            <div class="col-50">
+                                <label for="state"><i class="fa fa-address-card-o"></i> Status do Cadastro</label>
+                                <div class="box">
+                                    <select name="USER_STATUS"
+                                        {% if current_user.USER_ACCESS_LEVEL == 3 %}
+                                            disabled
+                                        {% endif %}>
+
+                                        {% for key, value in USER_STATUS_LIST.items() %}
+                                            <option value="{{key}}" 
+                                            {% if (key == USER_STATUS) %} 
+                                                selected="selected" 
+                                            {% endif %}
+                                            >
+                                            {{value}}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <button type="submit" class="btn">Salvar Dados</button>
+                <button type="cancel" class="btn">Cancelar</button>
+            </form>
+        </div>
+    </div>
+    
+</div>
+{% endblock %}
